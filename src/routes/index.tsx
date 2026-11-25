@@ -1,23 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { HomePage } from "@/components/bridge/home";
+import { metadata } from "@/components/bridge/data";
 
 // The home route ships no og:image, so serve-time hosting can inject the
 // project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => metadata("Home", "Turning Displaced Talent into Recognized Opportunity. Make your experience visible, grow your skills and connect with opportunities."),
+  component: HomePage,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}

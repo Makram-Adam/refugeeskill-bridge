@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep this foundation frontend-only with explicitly labeled demo data; no simulated authentication should claim to create real accounts.
+- Keep shared navigation and reusable workspace views in src/components/bridge, with one typed route and unique metadata per page, so all requested screens remain navigable.
