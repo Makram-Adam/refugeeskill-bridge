@@ -14,16 +14,380 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analysis_results: {
+        Row: {
+          created_at: string
+          evidence_suggestions: Json
+          extracted_skills: Json
+          growth_areas: Json
+          id: string
+          recommendations: Json
+          strengths: Json
+          submitted_experience: string
+          summary: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          evidence_suggestions?: Json
+          extracted_skills?: Json
+          growth_areas?: Json
+          id?: string
+          recommendations?: Json
+          strengths?: Json
+          submitted_experience: string
+          summary?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          evidence_suggestions?: Json
+          extracted_skills?: Json
+          growth_areas?: Json
+          id?: string
+          recommendations?: Json
+          strengths?: Json
+          submitted_experience?: string
+          summary?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analysis_results_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessments: {
+        Row: {
+          answers: Json
+          assessment_category: string
+          completed_at: string
+          completion_status: string
+          id: string
+          results: Json
+          user_id: string
+        }
+        Insert: {
+          answers: Json
+          assessment_category?: string
+          completed_at?: string
+          completion_status?: string
+          id?: string
+          results: Json
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          assessment_category?: string
+          completed_at?: string
+          completion_status?: string
+          id?: string
+          results?: Json
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessments_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      experiences: {
+        Row: {
+          created_at: string
+          description: string
+          end_date: string | null
+          id: string
+          job_title: string
+          organization: string
+          start_date: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          end_date?: string | null
+          id?: string
+          job_title: string
+          organization?: string
+          start_date?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          end_date?: string | null
+          id?: string
+          job_title?: string
+          organization?: string
+          start_date?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "experiences_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      learning_pathways: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          difficulty: string
+          duration: string
+          external_url: string | null
+          id: string
+          illustrative: boolean
+          provider: string
+          title: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          difficulty: string
+          duration: string
+          external_url?: string | null
+          id?: string
+          illustrative?: boolean
+          provider: string
+          title: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          difficulty?: string
+          duration?: string
+          external_url?: string | null
+          id?: string
+          illustrative?: boolean
+          provider?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          biography: string
+          created_at: string
+          employer_directory_consent: boolean
+          full_name: string
+          id: string
+          languages: string[]
+          location: string
+          passport_id: string
+          passport_sharing: boolean
+          portfolio_links: string[]
+          professional_category: string
+          professional_title: string
+          profile_visibility: string
+          share_assessments: boolean
+          updated_at: string
+        }
+        Insert: {
+          biography?: string
+          created_at?: string
+          employer_directory_consent?: boolean
+          full_name?: string
+          id: string
+          languages?: string[]
+          location?: string
+          passport_id?: string
+          passport_sharing?: boolean
+          portfolio_links?: string[]
+          professional_category?: string
+          professional_title?: string
+          profile_visibility?: string
+          share_assessments?: boolean
+          updated_at?: string
+        }
+        Update: {
+          biography?: string
+          created_at?: string
+          employer_directory_consent?: boolean
+          full_name?: string
+          id?: string
+          languages?: string[]
+          location?: string
+          passport_id?: string
+          passport_sharing?: boolean
+          portfolio_links?: string[]
+          professional_category?: string
+          professional_title?: string
+          profile_visibility?: string
+          share_assessments?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      qualifications: {
+        Row: {
+          completion_year: number | null
+          created_at: string
+          evidence_reference: string
+          id: string
+          institution: string
+          qualification_name: string
+          user_id: string
+          verification_status: string
+        }
+        Insert: {
+          completion_year?: number | null
+          created_at?: string
+          evidence_reference?: string
+          id?: string
+          institution?: string
+          qualification_name: string
+          user_id: string
+          verification_status?: string
+        }
+        Update: {
+          completion_year?: number | null
+          created_at?: string
+          evidence_reference?: string
+          id?: string
+          institution?: string
+          qualification_name?: string
+          user_id?: string
+          verification_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "qualifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      saved_pathways: {
+        Row: {
+          created_at: string
+          id: string
+          pathway_id: string
+          progress_status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          pathway_id: string
+          progress_status?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          pathway_id?: string
+          progress_status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_pathways_pathway_id_fkey"
+            columns: ["pathway_id"]
+            isOneToOne: false
+            referencedRelation: "learning_pathways"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "saved_pathways_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      skills: {
+        Row: {
+          assessment_status: string
+          created_at: string
+          evidence_description: string
+          id: string
+          proficiency_level: string
+          skill_category: string
+          skill_name: string
+          user_id: string
+        }
+        Insert: {
+          assessment_status?: string
+          created_at?: string
+          evidence_description?: string
+          id?: string
+          proficiency_level?: string
+          skill_category?: string
+          skill_name: string
+          user_id: string
+        }
+        Update: {
+          assessment_status?: string
+          created_at?: string
+          evidence_description?: string
+          id?: string
+          proficiency_level?: string
+          skill_category?: string
+          skill_name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "skills_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      admin_statistics: { Args: never; Returns: Json }
+      employer_directory: { Args: never; Returns: Json[] }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      public_passport: { Args: { _passport_id: string }; Returns: Json }
+      safe_passport: { Args: { _id: string }; Returns: Json }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "professional" | "employer" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +514,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["professional", "employer", "admin"],
+    },
   },
 } as const
